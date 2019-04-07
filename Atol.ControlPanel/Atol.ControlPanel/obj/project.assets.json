@@ -9458,6 +9458,7 @@
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.0.2105168",
       "Project.Bll.Core >= 1.0.0",
       "Project.Configuration >= 1.0.0",
+      "Project.Dal.Ef >= 1.0.0",
       "Swashbuckle.AspNetCore >= 4.0.1"
     ]
   },
@@ -9496,6 +9497,9 @@
           "projectReferences": {
             "F:\\Code\\TestProject\\AtolTestProject\\Atol.ControlPanel\\Atol.Bll\\Project.Bll.Core.csproj": {
               "projectPath": "F:\\Code\\TestProject\\AtolTestProject\\Atol.ControlPanel\\Atol.Bll\\Project.Bll.Core.csproj"
+            },
+            "F:\\Code\\TestProject\\AtolTestProject\\Atol.ControlPanel\\Atol.Dal\\Project.Dal.Ef.csproj": {
+              "projectPath": "F:\\Code\\TestProject\\AtolTestProject\\Atol.ControlPanel\\Atol.Dal\\Project.Dal.Ef.csproj"
             },
             "F:\\Code\\TestProject\\AtolTestProject\\Atol.ControlPanel\\Configuration\\Project.Configuration.csproj": {
               "projectPath": "F:\\Code\\TestProject\\AtolTestProject\\Atol.ControlPanel\\Configuration\\Project.Configuration.csproj"

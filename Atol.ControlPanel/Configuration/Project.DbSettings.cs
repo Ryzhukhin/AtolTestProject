@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.Extensions.Configuration;
 using Project.Bll.Core.Interfaces;
 using Project.Dal.Ef;
 

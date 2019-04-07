@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Atol.Bll\Project.Bll.Core.csproj" />
+    <ProjectReference Include="..\Atol.Dal\Project.Dal.Ef.csproj" />
     <ProjectReference Include="..\Configuration\Project.Configuration.csproj" />
   </ItemGroup>
 

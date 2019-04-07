@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Project.Bll.Core.Dto;
 using Project.Bll.Core.StoredItems;
 

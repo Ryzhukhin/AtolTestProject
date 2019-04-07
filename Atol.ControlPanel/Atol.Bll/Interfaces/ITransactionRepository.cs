@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Project.Bll.Core.Dto;
 using Project.Bll.Core.StoredItems;
 
 namespace Project.Bll.Core.Interfaces
