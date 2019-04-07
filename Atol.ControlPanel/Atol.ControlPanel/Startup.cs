@@ -8,11 +8,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Project.Bll.Core.Interfaces;
 using Project.Configuration;
+using Project.Dal.Ef;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace Atol.ControlPanel
@@ -61,6 +64,19 @@ namespace Atol.ControlPanel
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+            InitializeDatabase(app);
+        }
+
+        private void InitializeDatabase(IApplicationBuilder app)
+        {
+            using (var scope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var ef = scope.ServiceProvider.GetRequiredService<IUnitOfWorkFactory>()
+                    as EfUnitOfWorkFactory;
+
+                ef?.GetContext().Database.Migrate();
+            }
         }
     }
 }

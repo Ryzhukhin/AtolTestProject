@@ -7,11 +7,7 @@ namespace Project.Dal.Ef
         public ProjectDbContext CreateDbContext(string[] args)
         {
             return new ProjectDbContext(
-                "Username = postgres; " +
-                "Password = Egor10203040; " +
-                "Host = localhost; " +
-                "Port = 5432; " +
-                "Database = tsupdb;");
+                "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=AtolTestProject;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
     }
 }

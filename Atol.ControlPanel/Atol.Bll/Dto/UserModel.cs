@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Project.Bll.Core.StoredItems
+namespace Project.Bll.Core.Dto
 {
-    public class UserStoredItem
+    public class UserModel
     {
         public Guid Id { get; set; }
         public DateTime DateAdded { get; set; }
