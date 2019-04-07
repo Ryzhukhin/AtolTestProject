@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Project.Configuration;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Atol.ControlPanel
 {
@@ -25,7 +28,22 @@ namespace Atol.ControlPanel
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var config = ProjectConfiguration.ReadWithEnvironment();
+            var config = ProjectConfiguration.OverrideWithEnvironment();
+
+            services.AddMvc();
+
+            //добавление swagger
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc(name: "v1", info: new Info
+                {
+                    Title = "ControlPanel"
+                });
+
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory,
+                    $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
+
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

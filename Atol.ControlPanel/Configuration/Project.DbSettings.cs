@@ -22,18 +22,11 @@ namespace Project.Configuration
             else
                 throw new NotImplementedException();
 
-            var connectionString = Environment.GetEnvironmentVariable("connectionString");
+            var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
 
             return new ProjectDbSettings(
                 dbType: dbType,
                 connectionString: connectionString ?? this.ConnectionString);
-        }
-
-        public static ProjectDbSettings ReadFrom(IConfigurationRoot configuration)
-        {
-            var dbType = configuration.GetSection("dbType").Get<DbType>();
-            var connectionString = configuration.GetConnectionString("DatabaseConnectionString");
-            return new ProjectDbSettings(dbType, connectionString);
         }
 
         public ProjectDbSettings(DbType dbType, string connectionString)

@@ -11,9 +11,6 @@ namespace Project.Configuration
             DbSettings = dbSettings;
         }
 
-        public static ProjectConfiguration ReadWithEnvironment() =>
-            ReadFromFile(null).OverrideWithEnvironment();
-
         public ProjectDbSettings DbSettings { get; }
 
         public static ProjectConfiguration ReadFromFile(string path)
@@ -24,10 +21,11 @@ namespace Project.Configuration
                 dbSettings: dbSettings);
         }
 
-        public ProjectConfiguration OverrideWithEnvironment()
+        public static ProjectConfiguration OverrideWithEnvironment()
         {
-            var url = Environment.GetEnvironmentVariable("url");
-            var dbSettings = DbSettings.OverrideWithEnvironment();
+            var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
+            var dbSettings = new ProjectDbSettings(dbType: DbType.MsSql, 
+                                                    connectionString: connectionString);
 
             return new ProjectConfiguration(
                 dbSettings: dbSettings);
