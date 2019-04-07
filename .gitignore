@@ -1,0 +1,69 @@
+﻿dev/IikoBizWebInterface/IikoBizWebInterface/app/
+dev/IikoNetWebInterface/IikoNetWebInterface/logs/
+dev/IikoNetWebInterface/IikoNetWebInterface/Content/Images/Barcodes/*.gif
+build/	
+dev/logs/
+
+# visual studio
+bin/
+obj/
+TestResults/
+Debug/
+Release/
+packages/
+*.suo
+*.user
+*.vsmdi
+*.ncb
+*.sln.cache
+*.sln.ide
+.vs/
+*.dbmdl
+*.rdl.data
+
+# resharper
+_resharper.*/
+
+# delphi
+*.dcu
+
+# third parties
+ThirdParty/Net/*
+!ThirdParty/Net/NAnt/
+!ThirdParty/Net/NAnt/bin
+!ThirdParty/Net/NAntContrib/
+!ThirdParty/Net/NAntContrib/bin
+!ThirdParty/Net/Microsoft.Bcl.Build.*/
+
+
+
+!dev/Integrations/RKeeper/FarcardsPlugin/lib/Resto.iikoNet.Farcards.dll
+
+*.dotCover
+*.DotSettings.user
+
+# Резервная копия настроек Git Extensions (автоматически создаётся при изменении настроек)
+GitExtensions.settings.backup
+
+
+#Логи резгена и создаваемый им новый csv файл
+Resources/Translation/resources_new.csv
+BuildScripts/resgen/*.log
+BuildScripts/*.log
+
+#IikoNetWebInterface External Configs(added as link)
+dev/IikoNetWebInterface/IikoNetWebInterface/Config/GeoRedirectZones.config
+dev/IikoNetWebInterface/IikoNetWebInterface/Config/serviceModel.Behaviors.config
+dev/IikoNetWebInterface/IikoNetWebInterface/Config/serviceModel.Bindings.config
+dev/IikoNetWebInterface/IikoNetWebInterface/Config/serviceModel.Extensions.config
+
+.idea
+.idea/*
+node_modules
+wiremock-standalone-2.1.12.jar
+
+
+
+dev/CardService/UpgradeLog.htm
+dev/IikoBizWebInterface/IikoBizWebInterface/appvue/*
+*.orig
