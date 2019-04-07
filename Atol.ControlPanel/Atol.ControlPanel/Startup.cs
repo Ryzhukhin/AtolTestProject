@@ -37,6 +37,9 @@ namespace Atol.ControlPanel
             services.AddScoped<TransactionService>();
             services.AddScoped<UserService>();
 
+            //todo тут надо бы припилить выбор базы данных от environment variables
+            services.AddScoped<IUnitOfWorkFactory>(provider => EfUnitOfWorkFactory.CreateMsSqlBy(config.DbSettings.ConnectionString));
+
             services.AddMvc();
 
             //добавление swagger
