@@ -1,77 +1,131 @@
 <div class="row" id="main-row">
-    <div class="center-block text-center col-xl-12">
-        <div class="center-block text-center panel panel-default" id="main-panel">
-            <div style="margin: 25px;">
-                <mat-tab-group>
-                    <mat-tab label="Пользователи">
-                        <div class="d-flex flex-wrap justify-content-start">
-                            <div class="p-2 flex-list-with-users">
-                                <mat-card class="mat-card-user">
-                                    <mat-card-header>
-                                        <h2 class="user-text-h2">Пользователи</h2>
-                                    </mat-card-header>
-                                    <mat-card-content style="margin-top:15px;">
-                                       
-                                    </mat-card-content>
-                                </mat-card>
-                            </div>
-                            <div class="p-2 flex-list-with-users" *ngIf="IsUserEding">
-                                <mat-card class="mat-card-user">
-                                    <mat-card-header>
-                                        <h2 class="user-text-h2">Редактирование параметров
-                                            пользователя</h2>
-                                    </mat-card-header>
-                                    <mat-card-content style="margin-top:15px;">
-                                       
-                                    </mat-card-content>
+  <div class="center-block text-center col-xl-12">
+    <div class="center-block text-center panel panel-default" id="main-panel">
+      <div style="margin: 25px;">
+        <mat-tab-group>
+          <mat-tab label="Продукты">
+            <div class="d-flex flex-wrap justify-content-start">
+              <div class="p-2 flex-list-with-users">
+                <mat-card class="mat-card-user">
+                  <mat-card-header>
+                    <h2 class="user-text-h2">Все продукты</h2>
+                  </mat-card-header>
+                  <mat-card-content style="margin-top:15px;">
+                    <table [dataSource]="allUsersData" class="mat-elevation-z8" mat-table>
 
-                                </mat-card>
-                            </div>
-                            <div class="p-2 flex-list-with-users">
-                                <mat-card class="mat-card-user">
-                                    <mat-card-header>
-                                        <h2 class="user-text-h2">Регистрация нового пользователя</h2>
-                                    </mat-card-header>
-                                    <mat-card-content style="margin-top:15px;">
-                                      
-                                    </mat-card-content>
+                      <ng-container matColumnDef="dateAdded">
+                        <th *matHeaderCellDef mat-header-cell> Дата добавления</th>
+                        <td *matCellDef="let element" mat-cell> {{element.dateAdded| date: "dd-MM-yyyy HH:mm:ss"}} </td>
+                      </ng-container>
 
-                                </mat-card>
-                            </div>
-                            <!-- <button mat-button (click)="GetSqlMetrics()">SqlMetrics</button> -->
-                        </div>
-                    </mat-tab>
-                    <mat-tab label="Лист e-mail рассылки">
-                        <div class="d-flex flex-wrap justify-content-start">
-                            <div class="p-2 flex-list-with-email-list">
-                                <mat-card class="mat-card-email-list">
-                                    <mat-card-header>
-                                        <h2 class="user-text-h2">Регистрация нового пользователя</h2>
-                                    </mat-card-header>
-                                    <mat-card-content style="margin-top:15px;">
-                                       
-                                    </mat-card-content>
-                                </mat-card>
+                      <ng-container matColumnDef="title">
+                        <th *matHeaderCellDef mat-header-cell> Название</th>
+                        <td *matCellDef="let element" mat-cell> {{element.title}} </td>
+                      </ng-container>
 
-                            </div>
-                            <div class="p-2 flex-list-with-email-list">
-                                <mat-card class="mat-card-email-list">
-                                    <mat-card-header>
-                                        <h2 class="user-text-h2">Пользователи для расылки</h2>
-                                    </mat-card-header>
-                                    <mat-card-content style="margin-top:15px;">
-                                        
-                                    </mat-card-content>
-                                </mat-card>
-                            </div>
-                        </div>
-                    </mat-tab>
-                    <mat-tab label="Что-то еще">
-                        Что-то еще
-                    </mat-tab>
-                </mat-tab-group>
+                      <ng-container matColumnDef="description">
+                        <th *matHeaderCellDef mat-header-cell> Описание</th>
+                        <td *matCellDef="let element" mat-cell> {{element.description}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="price">
+                        <th *matHeaderCellDef mat-header-cell> Цена</th>
+                        <td *matCellDef="let element" mat-cell> {{element.price}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="note">
+                        <th *matHeaderCellDef mat-header-cell> Пометки</th>
+                        <td *matCellDef="let element" mat-cell> {{element.note}} </td>
+                      </ng-container>
+
+
+                      <tr *matHeaderRowDef="displayedColumnsAllUsers" mat-header-row></tr>
+                      <tr *matRowDef="let row; columns: displayedColumnsAllUsers;" mat-row></tr>
+                    </table>
+
+
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <div class="p-2 flex-list-with-users">
+                <mat-card class="mat-card-user">
+                  <mat-card-header>
+                    <h2 class="user-text-h2"></h2>
+                  </mat-card-header>
+                  <mat-card-content style="margin-top:15px;">
+
+                  </mat-card-content>
+
+                </mat-card>
+              </div>
+              <div class="p-2 flex-list-with-users">
+                <mat-card class="mat-card-user">
+                  <mat-card-header>
+                    <h2 class="user-text-h2">Регистрация нового продукта</h2>
+                  </mat-card-header>
+                  <mat-card-content style="margin-top:15px;">
+                    <form class="example-form">
+                      <mat-form-field class="example-full-width">
+                        <input [(ngModel)]="productTitle" matInput name="title"
+                               placeholder="Название">
+                      </mat-form-field>
+
+                      <mat-form-field class="example-full-width">
+                        <input [(ngModel)]="productDescription" matInput name="descr"
+                               placeholder="Описание">
+                      </mat-form-field>
+
+                      <mat-form-field class="example-full-width">
+                        <input [(ngModel)]="productPrice" matInput name="price"
+                               placeholder="Цена">
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width">
+                        <input [(ngModel)]="productNote" matInput name="note"
+                               placeholder="Пометка">
+                      </mat-form-field>
+
+                      <button (click)="EmptyAll()" mat-button> Отмена</button>
+                      <button (click)="SaveProduct()" mat-button> Сохранить товар</button>
+
+                    </form>
+                  </mat-card-content>
+
+                </mat-card>
+              </div>
+              <!-- <button mat-button (click)="GetSqlMetrics()">SqlMetrics</button> -->
             </div>
-        </div>
+          </mat-tab>
+          <mat-tab label="Пользователи">
+            <div class="d-flex flex-wrap justify-content-start">
+              <div class="p-2 flex-list-with-email-list">
+                <mat-card class="mat-card-email-list">
+                  <mat-card-header>
+                    <h2 class="user-text-h2">Пользователи</h2>
+                  </mat-card-header>
+                  <mat-card-content style="margin-top:15px;">
+
+                  </mat-card-content>
+                </mat-card>
+
+              </div>
+              <div class="p-2 flex-list-with-email-list">
+                <mat-card class="mat-card-email-list">
+                  <mat-card-header>
+                    <h2 class="user-text-h2">Регистрация нового пользователя</h2>
+                  </mat-card-header>
+                  <mat-card-content style="margin-top:15px;">
+
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Транзакции">
+            Тут транзакции и их редактирование
+          </mat-tab>
+        </mat-tab-group>
+      </div>
     </div>
+  </div>
 
 

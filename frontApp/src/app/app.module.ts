@@ -5,6 +5,10 @@ import { AppComponent } from './app.component';
 import {environment} from '../environments/environment';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/material-module';
+import {HttpClientModule} from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import { AuthClientService } from './authClient.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,9 +17,12 @@ import { MaterialModule } from 'src/material-module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule,
+    HttpModule,
+    FormsModule
   ],
-  providers: [{provide : 'BASE_URL' , useFactory : getBaseUrl}],
+  providers: [AuthClientService,{provide : 'BASE_URL' , useFactory : getBaseUrl}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

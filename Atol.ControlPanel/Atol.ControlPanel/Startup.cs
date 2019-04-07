@@ -68,6 +68,11 @@ namespace Atol.ControlPanel
             {
                 app.UseHsts();
             }
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
 
             app.UseHttpsRedirection();
             app.UseMvc();
