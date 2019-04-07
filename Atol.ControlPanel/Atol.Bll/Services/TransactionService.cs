@@ -24,7 +24,7 @@ namespace Project.Bll.Core.Services
 
         public List<TransactionModel> GetAll(Filter filter, int skip, int take)
         {
-            using (_unitOfWorkFactory.Create())
+            using (var context = _unitOfWorkFactory.Create())
             {
                 return _transactionRepository
                     .GetAll(filter: filter, 
@@ -36,7 +36,7 @@ namespace Project.Bll.Core.Services
 
         public void AddNew(UserModel userModel, ProductModel productModel)
         {
-            using (_unitOfWorkFactory.Create())
+            using (var context = _unitOfWorkFactory.Create())
             {
                 var user = _userRepository.GetById(userModel.Id);
                 var product = _productRepository.GetById(productModel.Id);
@@ -46,12 +46,14 @@ namespace Project.Bll.Core.Services
                     User = user
                 };
                 _transactionRepository.AddNew(transaction.ToStoredItem());
+
+                context.SaveChanges();
             }
         }
 
         public TransactionModel GetById(Guid id)
         {
-            using (_unitOfWorkFactory.Create())
+            using (var context = _unitOfWorkFactory.Create())
             {
                 return _transactionRepository.GetById(id).ToModel();
             }

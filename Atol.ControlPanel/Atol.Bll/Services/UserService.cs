@@ -30,25 +30,28 @@ namespace Project.Bll.Core.Services
 
         public void AddNew(UserModel user)
         {
-            using (_unitOfWorkFactory.Create())
+            using (var context = _unitOfWorkFactory.Create())
             {
                 _userRepository.AddNew(user.ToStoredItem());
+                context.SaveChanges();
             }
         }
 
         public UserModel GetById(Guid id)
         {
-            using (_unitOfWorkFactory.Create())
+            using (var context = _unitOfWorkFactory.Create())
             {
                 return _userRepository.GetById(id).ToModel();
+
             }
         }
 
         public void DeleteById(Guid id)
         {
-            using (_unitOfWorkFactory.Create())
+            using (var context = _unitOfWorkFactory.Create())
             {
                 _userRepository.DeleteById(id);
+                context.SaveChanges();
             }
         }
     }

@@ -32,15 +32,16 @@ namespace Project.Bll.Core.Services
 
         public void AddNew(ProductModel product)
         {
-            using (_unitOfWorkFactory.Create())
+            using (var context = _unitOfWorkFactory.Create())
             {
                 _productRepository.AddNew(product.ToStoredItem());
+                context.SaveChanges();
             }
         }
 
         public ProductModel GetById(Guid id)
         {
-            using (_unitOfWorkFactory.Create())
+            using (var context = _unitOfWorkFactory.Create())
             {
                 return _productRepository.GetById(id).ToModel();
             }
@@ -48,9 +49,10 @@ namespace Project.Bll.Core.Services
 
         public void DeleteById(Guid id)
         {
-            using (_unitOfWorkFactory.Create())
+            using (var context = _unitOfWorkFactory.Create())
             {
                 _productRepository.DeleteById(id);
+                context.SaveChanges();
             }
         }
     }

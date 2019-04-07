@@ -1,0 +1,86 @@
+div#main-row {
+    min-width: 1200px;
+
+    padding-left: 5vw;
+    padding-right: 5vw
+
+}
+
+div#main-panel {
+    margin-top: 2vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+.center-block-visible-area {
+    margin-top: 30px;
+}
+
+.mat-card-user {
+    width: 800px;
+}
+
+.mat-table {
+    width: 100%
+}
+
+.mat-icon {
+    /* margin-top: 5px;
+    margin-bottom: 5px; */
+    margin: 5px;
+}
+
+.mat-column-dateAdded, .mat-column-title, .mat-column-description, .mat-column-price,.mat-column-note {
+    padding: 10px;
+    text-align: center;
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 100px !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.mat-column-dateAdded {
+    width: 150px;
+    text-align: left;
+}
+
+.mat-column-title {
+    width: 150px;
+}
+
+.mat-column-description {
+    width: 150px;
+}
+
+.mat-column-price {
+    width: 75px;
+}
+
+.mat-icon-note {
+    width: 150px;
+}
+
+.user-text-h2 {
+    margin-left: 25px;
+    margin-top: 10px;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+
